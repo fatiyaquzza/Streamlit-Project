@@ -114,8 +114,8 @@ if st.button("Predict"):
         ax.imshow(img.permute(1, 2, 0).numpy())  # Convert from (C, H, W) to (H, W, C)
         ax.axis('off')
 
-        true_label_name = val_dataset.dataset.classes[true_label]
-        predicted_label_name = val_dataset.dataset.classes[predicted_label.item()]
+        true_label_name = val_dataset.classes[true_label]
+        predicted_label_name = val_dataset.classes[predicted_label.item()]
         ax.set_title(f"True: {true_label_name}\nPred: {predicted_label_name}")
 
     plt.tight_layout()
