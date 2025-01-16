@@ -32,9 +32,11 @@ def get_validation_loader():
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
-    val_dataset = datasets.ImageFolder(root="OriginalDataset", transform=validation_pipeline)
-    val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=32, shuffle=False)
-    return val_loader
+
+    full_dataset = datasets.ImageFolder(root="OriginalDataset", transform=validation_pipeline)
+
+    val_loader = torch.utils.data.DataLoader(full_dataset, batch_size=32, shuffle=False)
+    return val_loader, full_dataset
 
 # Calculate accuracy
 def calculate_accuracy(model, dataloader):
